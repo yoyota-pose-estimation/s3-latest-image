@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "pose-estimation-s3-latest-image.fullname" . }}
+  labels:
+    {{- include "pose-estimation-s3-latest-image.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "pose-estimation-s3-latest-image.selectorLabels" . | nindent 4 }}
