@@ -1,0 +1,16 @@
+apiVersion: skaffold/v1
+kind: Config
+build:
+  artifacts:
+    - image: registry.dudaji.org/yoyota/pose-estimation/s3-latest-image
+deploy:
+  helm:
+    releases:
+      - name: s3-latest-image
+        namespace: yoyota
+        chartPath: helm/pose-estimation-s3-latest-image
+        valuesFiles:
+          - helm/values/dev.yaml
+        setValueTemplates:
+          image.repository: "{{.IMAGE_NAME}}"
+          image.tag: "{{.DIGEST_HEX}}"

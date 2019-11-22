@@ -1,0 +1,31 @@
+s3:
+  secret: storage-credential
+
+args:
+  - --master
+  - --thunder-lock
+  - --enable-threads
+
+ingress:
+  enabled: true
+  hosts:
+    - host: s3-latest-image.dudaji.org
+      paths:
+        - "/"
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
+  tls:
+    - hosts:
+        - "*.dudaji.org"
+
+resoureces:
+  limits:
+    cpu: 200m
+    memory: 256mi
+
+securityContext:
+  runAsUser: 1000
+
+podSecurityContext:
+  fsGroup: 2000
