@@ -1,3 +1,11 @@
+s3:
+  secret: storage-credential
+
+args:
+  - --master
+  - --thunder-lock
+  - --enable-threads
+
 ingress:
   enabled: true
   hosts:
@@ -15,3 +23,9 @@ resoureces:
   limits:
     cpu: 200m
     memory: 256mi
+
+securityContext:
+  runAsUser: 1000
+
+podSecurityContext:
+  fsGroup: 2000

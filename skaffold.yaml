@@ -3,12 +3,6 @@ kind: Config
 build:
   artifacts:
     - image: registry.dudaji.org/yoyota/pose-estimation/s3-latest-image
-      sync:
-        manual:
-          - src: "src/**/*.py"
-            dest: .
-      docker:
-        target: dev
 deploy:
   helm:
     releases:

@@ -65,3 +65,7 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+args: []
+s3:
+  secret: ""
