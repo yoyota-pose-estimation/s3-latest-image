@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: yoyota7pose7estimation/s3-latest-image
+  repository: registry.dudaji.org/yoyota/s3-latest-image
   tag: latest
   pullPolicy: IfNotPresent
 

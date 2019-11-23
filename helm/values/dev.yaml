@@ -11,7 +11,7 @@ ingress:
   hosts:
     - host: s3-latest-image.dudaji.org
       paths:
-        - "/"
+        - "/api"
   annotations:
     kubernetes.io/ingress.class: nginx
     kubernetes.io/tls-acme: "true"

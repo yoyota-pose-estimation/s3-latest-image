@@ -2,11 +2,13 @@ import datetime
 import tensorflow as tf
 
 
-def get_latest_images(path_prefix):
-    now = datetime.datetime.utcnow()
-    file_glob_pattern = now.strftime("%H:%M:%S")
-    hour, minute = file_glob_pattern.split(":")[:2]
+def get_latest_images(path_prefix, time):
+    if not time:
+        time = datetime.datetime.utcnow() - datetime.timedelta(seconds=2)
+        time = str(time.isoformat()).split(".")[0]
+    ymd, hms = time.split("T")
+    hour, minute = hms.split(":")[:2]
     pattern = "s3://{}/{}/{}/{}/*{}*".format(
-        path_prefix, now.strftime("%Y-%m-%d"), hour, minute, file_glob_pattern
+        path_prefix, ymd, hour, minute, hms
     )
     return {"images": tf.io.gfile.glob(pattern)}
