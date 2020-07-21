@@ -9,7 +9,7 @@ def health():
     return "ok"
 
 
-@app.route("/api/path/prefix/<path:path_prefix>")
-def images(path_prefix):
-    return get_latest_images(path_prefix, request.args.get("time"))
+@app.route("/api/path/prefix/<path:path>")
+def images(path):
+    return get_latest_images(path)
 
