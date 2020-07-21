@@ -11,4 +11,5 @@ def get_latest_images(path_prefix, time):
     pattern = "s3://{}/{}/{}/{}/*{}*".format(
         path_prefix, ymd, hour, minute, hms
     )
+    print(pattern)
     return {"images": tf.io.gfile.glob(pattern)}

@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:2.0.0-py3 as dev
+FROM tensorflow/tensorflow:2.0.0-py3
 WORKDIR /usr/src/app
 
 COPY requirements.txt .
